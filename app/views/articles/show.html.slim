@@ -1,0 +1,14 @@
+h1
+  = @article.title
+  .pull-right
+    = link_to 'Edit', edit_article_path(@article), class: 'btn btn-default'
+
+hr
+
+strong = @article.category.try(:name)
+.pull-right Cerca de <b>#{time_to_ready (@article.body)}</b> de leitura
+
+
+p Atualizado <b>#{distance_of_time_in_words_to_now(@article.updated_at)}</b> atrás
+p = img @article.image.regular if @article.image?
+= simple_format @article.body
